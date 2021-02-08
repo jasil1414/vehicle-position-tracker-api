@@ -24,6 +24,7 @@ const getVehicleActivity = async (req, res) => {
       ) as vehicle
       on position.vehicleId = vehicle.id
     where time >= '${startDate.toISOString()}' and time <= '${endDate.toISOString()}'
+    sort by time
   `;
   
   const {items=[], err} = await db.query(queryString);
